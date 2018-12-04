@@ -17,31 +17,31 @@ namespace HiTuanReportTool.Models
         public int VId
         {
             get { return _vId; }
-            set { _vId = VId; }
+            set { _vId = value; }
         }
 
         public string VName
         {
             get { return _vName; }
-            set { _vName = VName; }
+            set { _vName = value; }
         }
 
         public int SuperiorId
         {
             get { return _superiorId; }
-            set { _superiorId = SuperiorId; }
+            set { _superiorId = value; }
         }
 
         public bool HasDirectPrice
         {
             get { return _hasDirectPrice; }
-            set { _hasDirectPrice = HasDirectPrice; }
+            set { _hasDirectPrice = value; }
         }
 
         public string Text
         {
             get { return _text; }
-            set { _text = Text; }
+            set { _text = value; }
         }
     }
 }

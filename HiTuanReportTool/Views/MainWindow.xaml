@@ -1,13 +1,18 @@
 ﻿<Window x:Class="HiTuanReportTool.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="嗨团报单系统" Height="400" Width="800">
+        Title="嗨团报单系统" Height="600" Width="800">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="351" Margin="10,10,0,0" VerticalAlignment="Top" Width="773" DataContext="{Binding DSBinding}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="姓名" Width="100"/>
-            </DataGrid.Columns>
-        </DataGrid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0">
+            <Button x:Name="btnImport" Width="100" Height="40" Content="数据录入"/>
+            <Button x:Name="btnDataDisplay" Width="100" Content="历史数据"/>
+            <Button x:Name="btnVendorManage" Width="100" Content="代理人管理"/>
+            <Button x:Name="btnProductManage" Width="100" Content="数据录入"/>
+        </WrapPanel>
     </Grid>
 </Window>
