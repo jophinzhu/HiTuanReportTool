@@ -4,15 +4,24 @@
         Title="嗨团报单系统" Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <WrapPanel Grid.Row="0">
-            <Button x:Name="btnImport" Width="100" Height="40" Content="数据录入"/>
-            <Button x:Name="btnDataDisplay" Width="100" Content="历史数据"/>
-            <Button x:Name="btnVendorManage" Width="100" Content="代理人管理"/>
-            <Button x:Name="btnProductManage" Width="100" Content="数据录入"/>
-        </WrapPanel>
+        <Viewbox Stretch="Fill" Grid.Row="0">
+            <TabControl HorizontalAlignment="Left" Height="580" VerticalAlignment="Top" Width="790">
+                <TabItem Header="团品录入" Height="40" Width="100">
+                    <Grid />
+                </TabItem>
+                <TabItem Header="订单录入" Width="100">
+                    <Grid />
+                </TabItem>
+                <TabItem Header="历史数据" Width="100">
+                    <Grid />
+                </TabItem>
+                <TabItem Header="代理人管理" Width="100">
+                    <Grid />
+                </TabItem>
+            </TabControl>
+        </Viewbox>
     </Grid>
 </Window>
