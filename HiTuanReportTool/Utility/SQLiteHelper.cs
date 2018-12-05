@@ -71,12 +71,12 @@ namespace HiTuanReportTool
         }
 
         /// <summary>
-        /// Shortcut method to execute dataset from SQL Statement and object[] arrray of  parameter values
+        /// Shortcut method to execute DataTable from SQL Statement and object[] arrray of  parameter values
         /// </summary>
         /// <param name="commandText">Command text.</param>
         /// <param name="paramList">Param list.</param>
         /// <returns></returns>
-        public DataSet ExecuteDataSet(string commandText, SQLiteParameter[] paramList)
+        public DataTable ExecuteDataTable(string commandText, SQLiteParameter[] paramList)
         {
             SQLiteCommand cmd = connection.CreateCommand();
             cmd.CommandText = commandText;
@@ -85,44 +85,44 @@ namespace HiTuanReportTool
                 foreach (var parm in paramList)
                     cmd.Parameters.Add(parm);
             }
-            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
             if (connection.State == ConnectionState.Closed)
                 connection.Open();
             SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
-            da.Fill(ds);
+            da.Fill(dt);
             da.Dispose();
             cmd.Dispose();
             connection.Close();
-            return ds;
+            return dt;
         }
 
         /// <summary>
-        /// Executes the dataset from a populated Command object.
+        /// Executes the DataTable from a populated Command object.
         /// </summary>
         /// <param name="cmd">Fully populated SQLiteCommand</param>
-        /// <returns>DataSet</returns>
-        public DataSet ExecuteDataset(SQLiteCommand cmd)
+        /// <returns>DataTable</returns>
+        public DataTable ExecuteDataTable(SQLiteCommand cmd)
         {
             if (cmd.Connection.State == ConnectionState.Closed)
                 cmd.Connection.Open();
-            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
             SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
-            da.Fill(ds);
+            da.Fill(dt);
             da.Dispose();
             cmd.Connection.Close();
             cmd.Dispose();
-            return ds;
+            return dt;
         }
 
         /// <summary>
-        /// Executes the dataset in a SQLite Transaction
+        /// Executes the DataTable in a SQLite Transaction
         /// </summary>
         /// <param name="transaction">SQLiteTransaction. Transaction consists of Connection, Transaction,  /// and Command, all of which must be created prior to making this method call. </param>
         /// <param name="commandText">Command text.</param>
         /// <param name="commandParameters">Sqlite Command parameters.</param>
-        /// <returns>DataSet</returns>
+        /// <returns>DataTable</returns>
         /// <remarks>user must examine Transaction Object and handle transaction.connection .Close, etc.</remarks>
-        public DataSet ExecuteDataset(SQLiteTransaction transaction, string commandText, params SQLiteParameter[] commandParameters)
+        public DataTable ExecuteDataTable(SQLiteTransaction transaction, string commandText, params SQLiteParameter[] commandParameters)
         {
 
             if (transaction == null) throw new ArgumentNullException("transaction");
@@ -135,8 +135,8 @@ namespace HiTuanReportTool
             }
             if (transaction.Connection.State == ConnectionState.Closed)
                 transaction.Connection.Open();
-            DataSet ds = ExecuteDataset((SQLiteCommand)cmd);
-            return ds;
+            DataTable dt = ExecuteDataTable((SQLiteCommand)cmd);
+            return dt;
         }
     }
 }

@@ -15,14 +15,14 @@ namespace HiTuanReportTool.Utility
         static string connString = "Data Source=" + AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.ConnectionStrings["SQLiteDB"].ConnectionString;
         SQLiteHelper sh = new SQLiteHelper(connString);
 
-        public DataSet GetDataSet(string commandText, SQLiteParameter[] paraList)
+        public DataTable GetDataTable(string commandText, SQLiteParameter[] paraList)
         {
-            return sh.ExecuteDataSet(commandText, paraList);
+            return sh.ExecuteDataTable(commandText, paraList);
         }
 
-        //public Vendor[] GetVendors()
-        //{
-
-        //}
+        public void SetSystemInfo(AppInfo appInfo)
+        {
+            
+        }
     }
 }
