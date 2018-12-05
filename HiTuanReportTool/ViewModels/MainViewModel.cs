@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HiTuanReportTool.Models;
 using HiTuanReportTool.Utility;
+using System.Windows.Input;
 
 namespace HiTuanReportTool.ViewModels
 {
@@ -19,12 +20,25 @@ namespace HiTuanReportTool.ViewModels
             get { return isExpired; }
             set { isExpired = value; }
         }
+        private string infoIdentity = "";
+        public string InfoIdentity
+        {
+            get { return infoIdentity; }
+            set { infoIdentity = value; }
+        }
 
-        private Vendor[] vendor;
+        private Vendor[] vendors;
         public Vendor[] Vendor
         {
-            get { return vendor; }
-            set { vendor = value; }
+            get { return vendors; }
+            set { vendors = value; }
+        }
+
+        private Product[] products;
+        public Product[] Products
+        {
+            get { return products; }
+            set { products = value; }
         }
 
         private AppInfo appInfo;
@@ -40,6 +54,11 @@ namespace HiTuanReportTool.ViewModels
             IsExpired = false;
             GetApplicationInformation();
         }
+
+        #region Commands
+        
+
+        #endregion
 
         #region Private Methods
         private void GetApplicationInformation()

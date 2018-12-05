@@ -73,7 +73,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Constants\Constants.cs" />
     <Compile Include="Models\AppInfo.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Utility\GetSystemInfo.cs" />
     <Compile Include="Utility\SQLiteHelper.cs" />

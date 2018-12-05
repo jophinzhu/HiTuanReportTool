@@ -17,7 +17,11 @@
                             <ColumnDefinition Width="490*"/>
                         </Grid.ColumnDefinitions>
                         <GroupBox Grid.Column="0" Header="信息识别">
-                            <RichTextBox x:Name="rtxtDataIdentify"/>
+                            <TextBox x:Name="txtDataIdentify" 
+                                  TextWrapping="Wrap"
+                                  AcceptsReturn="True"
+                                  VerticalScrollBarVisibility="Visible"  
+                                  Text="{Binding InfoIdentity}"/>
                         </GroupBox>
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
@@ -55,10 +59,10 @@
                                 </DataGrid>
                             </GroupBox>
                             <WrapPanel Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <Button x:Name="btnIdentity" Content="识别(I)" Width="50" Height="25" Margin="5,0"/>
-                                <Button x:Name="btnRecord" Content="录入(R)" Width="50" Margin="5,0"/>
-                                <Button x:Name="btnDelete" Content="删除(D)" Width="50" Margin="5,0"/>
-                                <Button x:Name="btnSubmit" Content="提交(S)" Width="50" Margin="5,0"/>
+                                <Button x:Name="btnIdentity" Content="识别" Width="50" Height="25" Margin="5,0" Click="btnIdentity_Click_1"/>
+                                <Button x:Name="btnRecord" Content="录入" Width="50" Margin="5,0"/>
+                                <Button x:Name="btnDelete" Content="删除" Width="50" Margin="5,0"/>
+                                <Button x:Name="btnSubmit" Content="提交" Width="50" Margin="5,0"/>
                             </WrapPanel>
                         </Grid>
                     </Grid>
