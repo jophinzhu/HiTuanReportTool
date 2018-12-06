@@ -13,7 +13,7 @@
                 <TabItem Header="团品录入" Height="40" Width="100">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="300*"/>
+                            <ColumnDefinition Width="280*"/>
                             <ColumnDefinition Width="490*"/>
                         </Grid.ColumnDefinitions>
                         <GroupBox Grid.Column="0" Header="信息识别">
@@ -25,42 +25,56 @@
                         </GroupBox>
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="160"/>
+                                <RowDefinition Height="180"/>
                                 <RowDefinition Height="50*"/>
                                 <RowDefinition Height="40"/>
                             </Grid.RowDefinitions>
-                            <GroupBox Grid.Row="0" Header="单个录入">
+                            <GroupBox Grid.Row="0" Header="单个录入" x:Name="gbSingleImport" DataContext="{Binding SingleProduct}">
                                 <StackPanel>
                                     <WrapPanel Height="25" Orientation="Horizontal" VerticalAlignment="Top" Margin="0,5">
                                         <Label Content="团品名:"/>
-                                        <TextBox x:Name="ProductName" Width="280"/>
+                                        <TextBox x:Name="ProductName" Width="280" Text="{Binding PName, Mode=TwoWay}"/>
                                         <Label Content="组合:"/>
-                                        <TextBox x:Name="Combinition" Width="25"/>
+                                        <TextBox x:Name="Combinition" Width="25" Text="{Binding Combinition, Mode=TwoWay}"/>
                                         <Label Content="单位:"/>
-                                        <TextBox x:Name="Unit" Width="25"/>
+                                        <TextBox x:Name="Unit" Width="25" Text="{Binding Unit, Mode=TwoWay}"/>
                                     </WrapPanel>
                                     <WrapPanel Height="25" Orientation="Horizontal" VerticalAlignment="Top" Margin="0,5">
                                         <Label Content="直销价:"/>
-                                        <TextBox x:Name="DirectPrice" Width="55"/>
+                                        <TextBox x:Name="DirectPrice" Width="55" Text="{Binding DirectPrice, Mode=TwoWay}"/>
                                         <Label Content="分销价:"/>
-                                        <TextBox x:Name="DistributePrice" Width="55"/>
+                                        <TextBox x:Name="DistributePrice" Width="55" Text="{Binding DistributionPrice, Mode=TwoWay}"/>
                                         <Label Content="团购价:"/>
-                                        <TextBox x:Name="GroupPrice" Width="55"/>
+                                        <TextBox x:Name="GroupPrice" Width="55" Text="{Binding GroupPrice, Mode=TwoWay}"/>
                                         <Label Content="日期:"/>
-                                        <DatePicker x:Name="ProductDate" Width="100" SelectedDate="{x:Static sys:DateTime.Now}" />
+                                        <DatePicker x:Name="ProductDate" Width="100" SelectedDate="{x:Static sys:DateTime.Now}"  Text="{Binding ProductDate, Mode=TwoWay}"/>
                                     </WrapPanel>
                                     <Label Content="备注："/>
-                                    <RichTextBox x:Name="Remarks" Height="40"/>
+                                    <TextBox x:Name="Remarks"
+                                             TextWrapping="Wrap"
+                                             AcceptsReturn="True"
+                                             VerticalScrollBarVisibility="Visible"  
+                                             Height="60" Text="{Binding Remarks, Mode=TwoWay}"/>
                                 </StackPanel>
                             </GroupBox>
                             <GroupBox Grid.Row="1" Header="团品管理">
-                                <DataGrid x:Name="ProductManageDG">
-                                    
+                                <DataGrid x:Name="ProductManageDG" ItemsSource="{Binding}" AutoGenerateColumns="False" IsReadOnly="True"
+                                          LoadingRow="ProductManageDG_LoadingRow" SelectionMode="Single" MouseDoubleClick="ProductManageDG_MouseDoubleClick">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="团品" Width="190*" Binding="{Binding PName}"/>
+                                        <DataGridTextColumn Header="直属价" Width="45" Binding="{Binding DirectPrice}"/>
+                                        <DataGridTextColumn Header="分销价" Width="45" Binding="{Binding DistributionPrice}"/>
+                                        <DataGridTextColumn Header="团购价" Width="45" Binding="{Binding GroupPrice}"/>
+                                        <DataGridTextColumn Header="组合" Width="35" Binding="{Binding Combinition}"/>
+                                        <DataGridTextColumn Header="单位" Width="35" Binding="{Binding Unit}"/>
+                                        <DataGridTextColumn Header="日期" Width="100" Binding="{Binding ProductDate}" IsReadOnly="True"/>
+                                    </DataGrid.Columns>
                                 </DataGrid>
                             </GroupBox>
                             <WrapPanel Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">
                                 <Button x:Name="btnIdentity" Content="识别" Width="50" Height="25" Margin="5,0" Click="btnIdentity_Click_1"/>
-                                <Button x:Name="btnRecord" Content="录入" Width="50" Margin="5,0"/>
+                                <Button x:Name="btnRecord" Content="录入" Width="50" Margin="5,0" Click="btnRecord_Click"/>
+                                <Button x:Name="btnUpdate" Content="更新" Width="50" Margin="5,0" Click="btnUpdate_Click"/>
                                 <Button x:Name="btnDelete" Content="删除" Width="50" Margin="5,0"/>
                                 <Button x:Name="btnSubmit" Content="提交" Width="50" Margin="5,0"/>
                             </WrapPanel>

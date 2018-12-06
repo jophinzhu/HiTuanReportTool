@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HiTuanReportTool.Models
 {
-    public class Product
+    public class Product : INotifyPropertyChanged
     {
         private int pId;
 
@@ -36,9 +37,9 @@ namespace HiTuanReportTool.Models
             get { return unit; }
             set { unit = value; }
         }
-        private decimal directPrice;
+        private decimal? directPrice;
 
-        public decimal DirectPrice
+        public decimal? DirectPrice
         {
             get { return directPrice; }
             set { directPrice = value; }
@@ -57,14 +58,16 @@ namespace HiTuanReportTool.Models
             get { return groupPrice; }
             set { groupPrice = value; }
         }
-        private DateTime productTime;
+        private string productDate;
 
-        public DateTime ProductTime
+        public string ProductDate
         {
-            get { return productTime; }
-            set { productTime = value; }
+            get { return productDate; }
+            set { productDate = value; }
         }
         private string remarks;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public string Remarks
         {

@@ -27,15 +27,21 @@ namespace HiTuanReportTool.ViewModels
             set { infoIdentity = value; }
         }
 
-        private Vendor[] vendors;
-        public Vendor[] Vendor
+        private List<Vendor> vendors;
+        public List<Vendor> Vendor
         {
             get { return vendors; }
             set { vendors = value; }
         }
+        private Product singleProduct;
 
-        private Product[] products;
-        public Product[] Products
+        public Product SingleProduct
+        {
+            get => singleProduct;
+            set => singleProduct = value;
+        }
+        private List<Product> products;
+        public List<Product> Products
         {
             get { return products; }
             set { products = value; }
@@ -47,16 +53,20 @@ namespace HiTuanReportTool.ViewModels
             get { return appInfo; }
             set { appInfo = value; }
         }
+
         #endregion
         public MainViewModel()
         {
             AppInfo = new AppInfo();
+            Products = new List<Product>();
+            SingleProduct = new Product();
+            SingleProduct.ProductDate = DateTime.Now.ToString("yyyy/MM/dd");
             IsExpired = false;
             GetApplicationInformation();
         }
 
         #region Commands
-        
+
 
         #endregion
 
@@ -80,6 +90,7 @@ namespace HiTuanReportTool.ViewModels
                 IsExpired = true;
             }
         }
+
         #endregion
     }
 }
