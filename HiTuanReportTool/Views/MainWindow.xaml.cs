@@ -25,6 +25,7 @@ namespace HiTuanReportTool
     public partial class MainWindow : Window
     {
         private MainViewModel mainViewModel;
+        Utility.DBUtility ut = new Utility.DBUtility();
         public MainWindow()
         {
             mainViewModel = new MainViewModel();
@@ -120,7 +121,7 @@ namespace HiTuanReportTool
                 string cUnit = "";
                 ///单个团品实体
                 Product singleProduct;
-                for (int i = 0; i < Constants.CircleNumbers.Length - 1; i++)
+                for (int i = 0; i < Constants.CircleNumbers.Length; i++)
                 {
                     singleProduct = new Product();
                     singleProduct.PId = i + 1;
@@ -220,7 +221,7 @@ namespace HiTuanReportTool
                 DataGridRefresh();
             }
             else
-                MessageBox.Show(checkResult, "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(checkResult, "提示", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -228,6 +229,47 @@ namespace HiTuanReportTool
             var objUpdate = mainViewModel.Products.Find(p => p.PId == mainViewModel.SingleProduct.PId);
             objUpdate = mainViewModel.SingleProduct;
             DataGridRefresh();
+        }
+
+        private void btnReset_Click_1(object sender, RoutedEventArgs e)
+        {
+            SingleProductInitial();
+        }
+
+        private void btnDelete_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (mainViewModel.SingleProduct.PId > 0)
+            {
+                mainViewModel.Products.Remove(mainViewModel.SingleProduct);
+                SingleProductInitial();
+                DataGridRefresh();
+            }
+            else
+                MessageBox.Show("请选择要删除的数据！", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void btnSubmit_Click_1(object sender, RoutedEventArgs e)
+        {
+            int results = 0;
+            if (mainViewModel.Products.Count > 0)
+            {
+                try
+                {
+                    results = ut.InsertProducts(mainViewModel.Products);
+                    if (results > 0)
+                        MessageBox.Show("团品信息提交成功！", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                    else
+                        MessageBox.Show("团品信息提交失败！", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("团品信息提交失败！" + ex.Message.ToString(), "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先录入团品信息，再进行提交！", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
         #endregion
     }

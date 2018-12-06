@@ -37,9 +37,10 @@ namespace HiTuanReportTool.ViewModels
 
         public Product SingleProduct
         {
-            get => singleProduct;
-            set => singleProduct = value;
+            get { return singleProduct; }
+            set { singleProduct = value; }
         }
+
         private List<Product> products;
         public List<Product> Products
         {

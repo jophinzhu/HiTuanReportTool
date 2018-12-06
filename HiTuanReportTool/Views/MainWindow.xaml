@@ -74,9 +74,10 @@
                             <WrapPanel Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">
                                 <Button x:Name="btnIdentity" Content="识别" Width="50" Height="25" Margin="5,0" Click="btnIdentity_Click_1"/>
                                 <Button x:Name="btnRecord" Content="录入" Width="50" Margin="5,0" Click="btnRecord_Click"/>
+                                <Button x:Name="btnReset" Content="重置" Width="50" Margin="5,0" Click="btnReset_Click_1"/>
                                 <Button x:Name="btnUpdate" Content="更新" Width="50" Margin="5,0" Click="btnUpdate_Click"/>
-                                <Button x:Name="btnDelete" Content="删除" Width="50" Margin="5,0"/>
-                                <Button x:Name="btnSubmit" Content="提交" Width="50" Margin="5,0"/>
+                                <Button x:Name="btnDelete" Content="删除" Width="50" Margin="5,0" Click="btnDelete_Click_1"/>
+                                <Button x:Name="btnSubmit" Content="提交" Width="50" Margin="5,0" Click="btnSubmit_Click_1"/>
                             </WrapPanel>
                         </Grid>
                     </Grid>

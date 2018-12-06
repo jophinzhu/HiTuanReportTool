@@ -35,7 +35,6 @@ D:\Projects\HiTuanReportTool\HiTuanReportTool\bin\Debug\System.Data.SQLite.Linq.
 D:\Projects\HiTuanReportTool\HiTuanReportTool\bin\Debug\EntityFramework.xml
 D:\Projects\HiTuanReportTool\HiTuanReportTool\bin\Debug\EntityFramework.SqlServer.xml
 D:\Projects\HiTuanReportTool\HiTuanReportTool\bin\Debug\System.Data.SQLite.xml
-D:\Projects\HiTuanReportTool\HiTuanReportTool\obj\Debug\HiTuanReportTool.csprojResolveAssemblyReference.cache
 D:\Projects\HiTuanReportTool\HiTuanReportTool\obj\Debug\App.g.cs
 D:\Projects\HiTuanReportTool\HiTuanReportTool\obj\Debug\HiTuanReportTool_MarkupCompile.cache
 D:\Projects\HiTuanReportTool\HiTuanReportTool\obj\Debug\HiTuanReportTool.g.resources
@@ -43,3 +42,4 @@ D:\Projects\HiTuanReportTool\HiTuanReportTool\obj\Debug\HiTuanReportTool.Propert
 D:\Projects\HiTuanReportTool\HiTuanReportTool\obj\Debug\HiTuanReportTool.csproj.GenerateResource.Cache
 D:\Projects\HiTuanReportTool\HiTuanReportTool\obj\Debug\Views\MainWindow.baml
 D:\Projects\HiTuanReportTool\HiTuanReportTool\obj\Debug\Views\MainWindow.g.cs
+D:\Projects\HiTuanReportTool\HiTuanReportTool\obj\Debug\HiTuanReportTool.csprojResolveAssemblyReference.cache

@@ -138,5 +138,37 @@ namespace HiTuanReportTool
             DataTable dt = ExecuteDataTable((SQLiteCommand)cmd);
             return dt;
         }
+
+        public int ExecuteNonQuery(SQLiteTransaction transaction, string commandText, params SQLiteParameter[] commandParameters)
+        {
+            if (transaction == null) throw new ArgumentNullException("transaction");
+            if (transaction != null && transaction.Connection == null) throw new ArgumentException("The transaction was rolled back or committed, please provide an open transaction.", "transaction");
+            IDbCommand cmd = transaction.Connection.CreateCommand();
+            cmd.CommandText = commandText;
+            foreach (SQLiteParameter parm in commandParameters)
+            {
+                cmd.Parameters.Add(parm);
+            }
+            if (transaction.Connection.State == ConnectionState.Closed)
+                transaction.Connection.Open();
+            return cmd.ExecuteNonQuery();
+        }
+
+
+        public int ExecuteNonQuery(string commandText, List<SQLiteParameter> commandParameters)
+        {
+            //SQLiteTransaction transaction = connection.BeginTransaction();
+            //if (transaction == null) throw new ArgumentNullException("transaction");
+            //if (transaction != null && transaction.Connection == null) throw new ArgumentException("The transaction was rolled back or committed, please provide an open transaction.", "transaction");
+            IDbCommand cmd = connection.CreateCommand();
+            cmd.CommandText = commandText;
+            foreach (SQLiteParameter parm in commandParameters)
+            {
+                cmd.Parameters.Add(parm);
+            }
+            if (connection.State == ConnectionState.Closed)
+                connection.Open();
+            return cmd.ExecuteNonQuery();
+        }
     }
 }
