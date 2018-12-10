@@ -83,7 +83,34 @@
                     </Grid>
                 </TabItem>
                 <TabItem Header="订单录入" Width="100">
-                    <Grid />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300*"/>
+                            <ColumnDefinition Width="490*"/>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Grid.Column="0" Header="信息识别">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="28"/>
+                                    <RowDefinition Height="28"/>
+                                    <RowDefinition Height="35*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Content="团品日期:" HorizontalAlignment="Right"/>
+                                <DatePicker x:Name="dpProduct" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" SelectedDate="{x:Static sys:DateTime.Now}" Width="90" Margin="5,2"/>
+                                <Label Grid.Row="1" Grid.Column="0" Content="团品:" HorizontalAlignment="Right"/>
+                                <ComboBox x:Name="cbProduct" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="120" Margin="5,2" ItemsSource="{Binding OrderProducts}" IsReadOnly="True"/>
+                                <TextBox Grid.Row="2" Grid.ColumnSpan="2" x:Name="txtOrderDataIdentify" 
+                                      TextWrapping="Wrap"
+                                      AcceptsReturn="True"
+                                      VerticalScrollBarVisibility="Visible"  
+                                      Text="{Binding InfoIdentity}"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
                 </TabItem>
                 <TabItem Header="历史数据" Width="100">
                     <Grid />
